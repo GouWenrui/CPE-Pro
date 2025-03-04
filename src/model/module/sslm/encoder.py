@@ -1,5 +1,5 @@
 import torch.nn as nn
-from transformers import EsmModel as SSLM # "Structure-Sequence" Language Model
+from transformers import EsmModel as SSLM # Structural Sequence Language Model
 from transformers import EsmConfig as SSLMConfig
 from transformers import EsmTokenizer as SSLMTokenizer
 
