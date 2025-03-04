@@ -1,7 +1,8 @@
 import torch 
 import torch.nn as nn 
 from transformers import (
-    EsmModel, 
+    EsmModel,
+    T5EncoderModel, 
     AutoTokenizer, 
     EsmTokenizer,
     BertModel,
@@ -18,21 +19,10 @@ from model.module.gvp.encoder import GVPEncoder
 from model.module.classify import ClassificationHead
 from model.module.gvp.gvp_utils import flatten_graph
 
-# =================
-# Baseline models
-# =================
-# ESM-1b + GVP
-# ESM-1v　+ GVP
-# ESM-2 + GVP 
-# ProtBert　+ GVP
-# SaProt
-# =================
-
 class PLMEncoder(nn.Module):
     
     def __init__(self, args):
-        
-        super().__init__()
+        super(PLMEncoder, self).__init__()
         
         self.sequence_max_length = args.sequence_max_length
         
@@ -45,6 +35,9 @@ class PLMEncoder(nn.Module):
         elif args.plm_type == 'prot_bert':
             self.tokenizer = BertTokenizer.from_pretrained(args.plm_dir)
             self.plm_encoder = BertModel.from_pretrained(args.plm_dir)
+        elif args.plm_type == 'ankh':
+            self.tokenizer = AutoTokenizer.from_pretrained(args.plm_dir)
+            self.plm_encoder = T5EncoderModel.from_pretrained(args.plm_dir)
         else:
             raise ValueError('plm_type must be one of "esm", "saprot", "prot_bert"')
         
@@ -56,7 +49,6 @@ class PLMEncoder(nn.Module):
         self.device = args.device
         
     def forward(self, sequences):
-        
         inputs = self.tokenizer(sequences, 
                                 return_tensors='pt', 
                                 padding=True, 
@@ -69,12 +61,11 @@ class PLMEncoder(nn.Module):
 class PLM_GVP(nn.Module):
     
     def __init__(self, args):
-        
         super().__init__()
         
         self.plm_encoder = PLMEncoder(args)
         
-        if args.plm_type == 'esm' or args.plm_type == 'prot_bert':
+        if args.plm_type in ['esm', 'ankh', 'prot_bert']:
             self.gvp_encoder = GVPEncoder(args)
             self.embed_plm_output = nn.Linear(
                 self.plm_encoder.output_dim,
@@ -93,9 +84,7 @@ class PLM_GVP(nn.Module):
         self.loss_fn = cross_entropy if args.num_classes > 2 else binary_cross_entropy_with_logits 
     
     def forward(self, batch):
-        
         plm_output = self.plm_encoder(batch[0])
-        
         if self.plm_type != 'saprot':
             coords, coord_mask, padding_mask, confidence = self.to_device(*batch[1:-1], device=self.device)
             node_embeddings, edge_embeddings, edge_index = self.gvp_encoder.get_embeddings(
@@ -117,7 +106,6 @@ class PLM_GVP(nn.Module):
             encoder_output = self.gvp_encoder.integrate(node_embeddings, edge_embeddings, edge_index, coords)   
         logits = self.classification_head(plm_output if self.plm_type == 'saprot' else encoder_output)
         target = batch[-1].to(self.device) if self.num_classes > 2 else one_hot(batch[-1], 2).float().to(self.device)
-        
         return BaseModelOutput(
             hidden_states=plm_output if self.plm_type == 'saprot' else node_embeddings,
             logits=logits,
@@ -126,7 +114,4 @@ class PLM_GVP(nn.Module):
         )
     
     def to_device(self, *tensors, device):
-        
         return tuple(tensor.to(device) for tensor in tensors)
-        
-    
