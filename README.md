@@ -58,11 +58,11 @@ The link to the dataset can be found in the `source` folder.
 
 (3) **[SCOPe](https://scop.berkeley.edu/)**: We selected a subset of gene domain sequences from the non-redundant Astral SCOPe 2.08 database in SCOPe, where the identity between sequences is less than 40%. From this subset, we focused on all-α helical proteins (2,644) and all-β sheet proteins (3,059) and filtered the corresponding structural sets in the database.
 
-(4) **Case Study**: Proteins BLAT ECOLX and CP2C9 HUMAN. In three structural prediction models, both proteins achieved pLDDT scores above 0.9, indicating high accuracy in structure prediction with minimal deviation from the crystal structure.
+(4) **Case Study**: Proteins BLAT ECOLX and CP2C9 HUMAN. In three structural prediction models, both proteins achieved pLDDT scores above 0.9, indicating high accuracy in structure prediction with minimal deviation from the crystal structure. The protein structures used in case study can be found in the `source` folder.
+
+(5) We have open-sourced the **[pre-trained SSLM](https://huggingface.co/gwenrui/Pretrained_SSLM/tree/main)** and the model weights of **[CPE-Pro](https://huggingface.co/gwenrui/CPE-Pro_29M/tree/main)** for structural origin evaluation on Hugging Face. The weight files of various PLMs can be downloaded from the **[Transformers library](https://huggingface.co/models)**. The protein structure datasets used for **[CPE-Pro training](https://huggingface.co/datasets/gwenrui/CATH-PFD/tree/main)**, **[visualization experiments](https://huggingface.co/datasets/gwenrui/SCOPE-2.08-filter/tree/main)**, and **[SSLM pre-training](https://huggingface.co/datasets/gwenrui/Swiss-Prot_filter_by_pLDDT/tree/main)** are also uploaded to Hugging Face.
 
 ### Pretrain SSLM and Train CPE-Pro
-
-The information about the model's weight files can be found in the `source` folder.
 
 (1) See the `pretrain.py` script for pretraining details. Examples can be found in `pretrain` folder.
 
