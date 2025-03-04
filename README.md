@@ -12,13 +12,13 @@ The sequential encoder of CPE-Pro is the Structural Sequence Language Model, SSL
 
 ### Paper Results
 
-We compared CPE-Pro to various embedded-based deep learning methods on the dataset **CATH-PFD**. Our analysis includes pre-trained PLMs(**ESM1b, ESM1v, ESM2, ProtBert, Ankh**) combined with GVP-GNN as a model with amino acid sequence and structure input, and the structure-aware PLM **SaProt**.
+We compared CPE-Pro to various embedded-based deep learning methods on the dataset **CATH-PFD**. Our analysis includes pre-trained PLMs(**ESM1b, ESM1v, ESM2, ProtBert, Ankh**) combined with GVP-GNN as a model with amino acid (AA) sequence and structure input, and the structure-aware PLM **SaProt**.
 
 (1) Results show CPE-Pro demonstrates exceptionally high accuracy performance in two structure origin evaluation tasks (C-A: Crystal - AlphaFold2, C-M: Crystal - Multiple prediction models).
 
 (2) Feature visualization method powerfully demonstrates pre-trained SSLM's excellence in capturing structural differences.
 
-(3) Preliminary experimental results indicate that, compared to models based on amino acid (AA) sequences, structural sequences enable language models to learn more informative protein features. When combined with protein graph embeddings, they further enrich and optimize structural representations.
+(3) Preliminary experimental results indicate that, compared to models based on AA sequences, structural sequences enable language models to learn more informative protein features. When combined with protein graph embeddings, they further enrich and optimize structural representations.
 
 ## 🛫 Requirement
 
@@ -58,7 +58,7 @@ The link to the dataset can be found in the `source` folder.
 
 (3) **[SCOPe](https://scop.berkeley.edu/)**: We selected a subset of gene domain sequences from the non-redundant Astral SCOPe 2.08 database in SCOPe, where the identity between sequences is less than 40%. From this subset, we focused on all-α helical proteins (2,644) and all-β sheet proteins (3,059) and filtered the corresponding structural sets in the database.
 
-(4) **Case Study**(BLAT ECOLX and CP2C9 HUMAN): In three structural prediction models, both proteins achieved pLDDT scores above 0.9, indicating high accuracy in structure prediction with minimal deviation from the crystal structure.
+(4) **Case Study**: Proteins BLAT ECOLX and CP2C9 HUMAN. In three structural prediction models, both proteins achieved pLDDT scores above 0.9, indicating high accuracy in structure prediction with minimal deviation from the crystal structure.
 
 ### Pretrain SSLM and Train CPE-Pro
 
