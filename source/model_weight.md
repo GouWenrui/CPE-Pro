@@ -1,1 +1,0 @@
-We have open-sourced the **[pre-trained SSLM](https://huggingface.co/gwenrui/Pretrained_SSLM)** and the model weights of **[CPE-Pro](https://huggingface.co/gwenrui/CPE-Pro_29M/tree/main)** for structural origin evaluation on Hugging Face.
