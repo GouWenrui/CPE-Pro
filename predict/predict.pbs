@@ -12,8 +12,8 @@ conda activate protein
 
 python predict.py \
     --foldseek /foldseek \
-    --model_weight_path checkpoint/CPEPro_4_29.0M_0.25-9-0-1.pth \
-    --sslm_dir /home/tanyang/R_R/sslm/0.25-9-0-1 \
+    --model_weight_path CPE-Pro_29M_for_C-M.pth \
+    --sslm_dir SSLM_t3_25M_Swiss-Prot/ \
     --sequence_max_length 256 \
     --linear_dropout 0.15 \
     --num_classes 4 \
