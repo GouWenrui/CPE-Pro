@@ -1,4 +1,4 @@
-# CPE-Pro: A Structure-Sensitive Deep Learning Model for Protein Representation and Origin Evaluation
+# CPE-Pro: A Structure-Sensitive Deep Learning Method for Protein Representation and Origin Evaluation
 
 ## 🚀 Introduction
 
@@ -67,19 +67,3 @@ The link to the dataset can be found in the `source` folder.
 (1) See the `pretrain.py` script for pretraining details. Examples can be found in `pretrain` folder.
 
 (2) See the `train.py` script for training details. Examples can be found in `scripts` folder.
-
-## 🙌 Citation
-
-Please cite our work if you have used our code or data.
-
-```
-@misc{gou2024cpeprostructuresensitivedeeplearning,
-      title={CPE-Pro: A Structure-Sensitive Deep Learning Method for Protein Representation and Origin Evaluation}, 
-      author={Wenrui Gou and Wenhui Ge and Yang Tan and Mingchen Li and Guisheng Fan and Huiqun Yu},
-      year={2024},
-      eprint={2410.15592},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.BM},
-      url={https://arxiv.org/abs/2410.15592}, 
-}
-```
