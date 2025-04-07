@@ -42,7 +42,7 @@ class CPEPro(BaseModel):
                 dropout=args.linear_dropout
             )
 
-        self.loss_fn = cross_entropy if args.num_classes > 2 else binary_cross_entropy_with_logits
+        self.loss_fn = cross_entropy
         
         self.num_classes = args.num_classes
         self.use_sslm = args.use_sslm
@@ -81,7 +81,7 @@ class CPEPro(BaseModel):
             logits = self.classification_head(encoder_output)
         
         if not predict:
-            target = batch[-1].to(self.device) if self.num_classes > 2 else one_hot(batch[-1], num_classes=self.num_classes).float().to(self.device)
+            target = batch[-1].to(self.device)
             loss = self.loss_fn(logits, target)
         
         return BaseModelOutput(
