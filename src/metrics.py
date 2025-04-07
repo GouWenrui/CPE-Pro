@@ -39,7 +39,7 @@ class Metrics:
                 metric(pred, target.to(self.device))
         else:
             for metric in self.metrics_dict.values():
-                metric(torch.sigmoid(pred), target.long()to(self.device))
+                metric(torch.sigmoid(pred), target.long().to(self.device))
                 
     def compute(self):
         
