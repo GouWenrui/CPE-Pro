@@ -34,8 +34,12 @@ class Metrics:
         
     def update(self, pred, target):
         
-        for metric in self.metrics_dict.values():
-            metric(pred, target.to(self.device))
+        if self.num_classes > 2:
+            for metric in self.metrics_dict.values():
+                metric(pred, target.to(self.device))
+        else:
+            for metric in self.metrics_dict.values():
+                metric(torch.sigmoid(pred), target.long()to(self.device))
                 
     def compute(self):
         
