@@ -82,6 +82,9 @@ class CPEPro(BaseModel):
         
         if not predict:
             target = batch[-1].to(self.device)
+            if self.num_classes == 1:
+                target = target.float()
+                logits = logits.squeeze(1)
             loss = self.loss_fn(logits, target)
         
         return BaseModelOutput(
