@@ -17,7 +17,7 @@ python src/train.py \
     --foldseek /foldseek \
     --label_mapping '{"crystal": 0, "alphafold": 1}' \
     --file_path /CPE-Pro-dataset/C-A_pdb/ \
-    --num_classes 2 \
+    --num_classes 1 \
     --linear_dropout 0.15 \
     --seed 3407 \
     --device cuda \
