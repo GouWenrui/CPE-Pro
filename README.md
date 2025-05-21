@@ -31,7 +31,7 @@ Please make sure you have installed **[Anaconda3](https://www.anaconda.com/downl
 
 Then
 ```
-cd CPE-Pro-main
+cd CPE-Pro
 ```
 You can create the required environment using the following two methods.
 ```
