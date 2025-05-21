@@ -10,6 +10,9 @@ The sequential encoder of CPE-Pro is the Structural Sequence Language Model, SSL
 
 ## 📑 Results
 
+### News
+[2025.05.13] Congratulations! Our paper was accepted by **[Interdisciplinary Sciences: Computational Life Sciences}(https://link.springer.com/journal/12539)** (INSC).
+
 ### Paper Results
 
 We compared CPE-Pro to various embedded-based deep learning methods on the dataset **CATH-PFD**. Our analysis includes pre-trained PLMs(**ESM1b, ESM1v, ESM2, ProtBert, Ankh**) combined with GVP-GNN as a model with amino acid (AA) sequence and structure input, and the structure-aware PLM **SaProt**.
