@@ -12,6 +12,7 @@ The sequential encoder of CPE-Pro is the Structural Sequence Language Model, SSL
 
 ### News
 [2025.05.13] Congratulations! Our paper was accepted by **[Interdisciplinary Sciences: Computational Life Sciences](https://link.springer.com/journal/12539)** (INSC).
+[2025.06.08] Our paper has been published on **[Interdisciplinary Sciences: Computational Life Sciences](https://link.springer.com/journal/12539)** (INSC).
 
 ### Paper Results
 
